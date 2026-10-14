@@ -1,3 +1,4 @@
+import math
 movies = [
     {"title": "The Dune Chronicles", "year": 2021, "genres": {"sci-fi", "drama"},
      "rating": 8.6, "duration_min": 155, "actors": ["T. Chalamet", "R. Ferguson", "O. Isaac"]},
@@ -21,9 +22,41 @@ movies = [
      "rating": 7.3, "duration_min": 129, "actors": ["P. Diaz", "T. Chalamet"]},
 ]
 
-def main():
-    print("Hello from dz-catalog-analysis-vishniakov-m26-555!")
+#Задача 1: Напишите три функции для базовой статистики каталога.
+
+def average_rating(list):
+    if not list:
+        return 0.0
+    total = 0
+    for m in list:
+        total += m["rating"]
+    return round(total / len(movies), 1)
+
+#print(average_rating(movies))
+
+def catalog_age_stats(list, current_year):
+    ages = []
+    for m in list:
+        ages.append(current_year - m["year"])
+
+    oldest = max(ages)
+    newest = min(ages)
+    average = math.ceil(sum(ages) / len(ages))
+
+    return (oldest, newest, average)
+
+#print(catalog_age_stats(movies, current_year=2026))
+
+def duration_in_hours(minutes):
+    hours = minutes // 60
+    min = minutes % 60
+    return f"{hours}ч {min}м"
+
+#print(duration_in_hours(567))
+
+# def main():
+#     print("Hello from dz-catalog-analysis-vishniakov-m26-555!")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
