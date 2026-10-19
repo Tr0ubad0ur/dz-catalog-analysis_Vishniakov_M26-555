@@ -107,4 +107,24 @@ def count_long_movies(movies, threshold=120):
 # find_first_masterpiece(movies[:7])
 # print(count_long_movies(movies))
 
+#Этап 4. Строки
+
+def normalize_title(title):
+    words = title.split()
+    result = []
+    for word in words:
+        result.append(word[0].upper() + word[1:])
+    return " ".join(result)
+
+
+def make_slug(title):
+    return title.lower().replace(" ", "-")
+
+
+def format_report_line(movie):
+    title = normalize_title(movie["title"])
+    genres = ", ".join(sorted(movie["genres"]))
+    duration = duration_in_hours(movie["duration_min"])
+    return f'"{title}" ({movie["year"]}) — {movie["rating"]}/10, {duration}, жанры: {genres}'
+
 
