@@ -54,7 +54,7 @@ def duration_in_hours(minutes):
 
 #print(duration_in_hours(567))
 
-# Этап 2
+# Этап 2. Условия и match
 
 def rating_tier(rating):
     if rating >= 7:
@@ -73,3 +73,38 @@ def decade_label(year):
             return "недавние"
         case _:
             return "старые"
+
+#Этап 3. Циклы
+
+def print_non_comedy(movies):
+    for movie in movies:
+        if "comedy" in movie["genres"]:
+            continue
+        print(movie["title"])
+
+
+def find_first_masterpiece(movies):
+    i = 0
+    while i < len(movies):
+        if movies[i]["rating"] > 9.0:
+            print(f"Первый шедевр: {movies[i]['title']}")
+            break
+        i += 1
+    else:
+        print("Шедевров не найдено")
+
+
+def count_long_movies(movies, threshold=120):
+    count = 0
+    for movie in movies:
+        if movie["duration_min"] > threshold:
+            count += 1
+    return count
+
+
+# print_non_comedy(movies)
+# find_first_masterpiece(movies)
+# find_first_masterpiece(movies[:7])
+# print(count_long_movies(movies))
+
+
