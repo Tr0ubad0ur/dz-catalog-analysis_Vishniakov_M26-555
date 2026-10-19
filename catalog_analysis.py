@@ -138,4 +138,25 @@ def top_n_by_rating(movies, n=3):
     ordered = sorted(movies, key=lambda m: m["rating"], reverse=True)
     return [(m["title"], m["rating"]) for m in ordered[:n]]
 
+#Этап 6. Словари
+
+def count_by_genre(movies):
+    counts = {}
+    for movie in movies:
+        for genre in movie["genres"]:
+            counts[genre] = counts.get(genre, 0) + 1
+    return counts
+
+
+def actor_filmography(movies):
+    result = {}
+    for movie in movies:
+        for actor in movie["actors"]:
+            result.setdefault(actor, []).append(movie["title"])
+    return result
+
+
+avg = average_rating(movies)
+above_average = {m["title"]: m["rating"] for m in movies if m["rating"] > avg}
+
 
