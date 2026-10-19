@@ -1,28 +1,90 @@
 import math
+
 movies = [
-    {"title": "The Dune Chronicles", "year": 2021, "genres": {"sci-fi", "drama"},
-     "rating": 8.6, "duration_min": 155, "actors": ["T. Chalamet", "R. Ferguson", "O. Isaac"]},
-    {"title": "Kitchen Stories", "year": 2019, "genres": {"comedy", "drama"},
-     "rating": 7.1, "duration_min": 98, "actors": ["A. Novak", "M. Ferguson"]},
-    {"title": "silent hours", "year": 2016, "genres": {"thriller", "drama"},
-     "rating": 6.4, "duration_min": 112, "actors": ["J. Bloom", "K. Lee"]},
-    {"title": "Comet Racers", "year": 2023, "genres": {"sci-fi", "action"},
-     "rating": 5.9, "duration_min": 101, "actors": ["O. Isaac", "P. Diaz"]},
-    {"title": "The Last Bakery", "year": 2014, "genres": {"comedy"},
-     "rating": 7.8, "duration_min": 89, "actors": ["A. Novak", "T. Chalamet"]},
-    {"title": "midnight in oslo", "year": 2020, "genres": {"thriller", "mystery"},
-     "rating": 8.9, "duration_min": 124, "actors": ["K. Lee", "R. Ferguson"]},
-    {"title": "Garden of Static", "year": 2022, "genres": {"drama"},
-     "rating": 4.8, "duration_min": 137, "actors": ["P. Diaz", "J. Bloom"]},
-    {"title": "The Quiet Algorithm", "year": 2024, "genres": {"sci-fi", "drama"},
-     "rating": 9.2, "duration_min": 118, "actors": ["M. Ferguson", "O. Isaac"]},
-    {"title": "Two Left Shoes", "year": 2011, "genres": {"comedy"},
-     "rating": 6.0, "duration_min": 95, "actors": ["A. Novak", "K. Lee"]},
-    {"title": "Red Harbor", "year": 2018, "genres": {"action", "thriller"},
-     "rating": 7.3, "duration_min": 129, "actors": ["P. Diaz", "T. Chalamet"]},
+    {
+        "title": "The Dune Chronicles",
+        "year": 2021,
+        "genres": {"sci-fi", "drama"},
+        "rating": 8.6,
+        "duration_min": 155,
+        "actors": ["T. Chalamet", "R. Ferguson", "O. Isaac"],
+    },
+    {
+        "title": "Kitchen Stories",
+        "year": 2019,
+        "genres": {"comedy", "drama"},
+        "rating": 7.1,
+        "duration_min": 98,
+        "actors": ["A. Novak", "M. Ferguson"],
+    },
+    {
+        "title": "silent hours",
+        "year": 2016,
+        "genres": {"thriller", "drama"},
+        "rating": 6.4,
+        "duration_min": 112,
+        "actors": ["J. Bloom", "K. Lee"],
+    },
+    {
+        "title": "Comet Racers",
+        "year": 2023,
+        "genres": {"sci-fi", "action"},
+        "rating": 5.9,
+        "duration_min": 101,
+        "actors": ["O. Isaac", "P. Diaz"],
+    },
+    {
+        "title": "The Last Bakery",
+        "year": 2014,
+        "genres": {"comedy"},
+        "rating": 7.8,
+        "duration_min": 89,
+        "actors": ["A. Novak", "T. Chalamet"],
+    },
+    {
+        "title": "midnight in oslo",
+        "year": 2020,
+        "genres": {"thriller", "mystery"},
+        "rating": 8.9,
+        "duration_min": 124,
+        "actors": ["K. Lee", "R. Ferguson"],
+    },
+    {
+        "title": "Garden of Static",
+        "year": 2022,
+        "genres": {"drama"},
+        "rating": 4.8,
+        "duration_min": 137,
+        "actors": ["P. Diaz", "J. Bloom"],
+    },
+    {
+        "title": "The Quiet Algorithm",
+        "year": 2024,
+        "genres": {"sci-fi", "drama"},
+        "rating": 9.2,
+        "duration_min": 118,
+        "actors": ["M. Ferguson", "O. Isaac"],
+    },
+    {
+        "title": "Two Left Shoes",
+        "year": 2011,
+        "genres": {"comedy"},
+        "rating": 6.0,
+        "duration_min": 95,
+        "actors": ["A. Novak", "K. Lee"],
+    },
+    {
+        "title": "Red Harbor",
+        "year": 2018,
+        "genres": {"action", "thriller"},
+        "rating": 7.3,
+        "duration_min": 129,
+        "actors": ["P. Diaz", "T. Chalamet"],
+    },
 ]
 
-#Этап 1: Напишите три функции для базовой статистики каталога.
+# Этап 1: Напишите три функции для базовой статистики каталога.
+
 
 def average_rating(list):
     if not list:
@@ -32,9 +94,11 @@ def average_rating(list):
         total += m["rating"]
     return round(total / len(movies), 1)
 
-#print(average_rating(movies))
 
-def catalog_age_stats(list, current_year = 2026):
+# print(average_rating(movies))
+
+
+def catalog_age_stats(list, current_year=2026):
     ages = []
     for m in list:
         ages.append(current_year - m["year"])
@@ -45,16 +109,20 @@ def catalog_age_stats(list, current_year = 2026):
 
     return (oldest, newest, average)
 
-#print(catalog_age_stats(movies, current_year=2026))
+
+# print(catalog_age_stats(movies, current_year=2026))
+
 
 def duration_in_hours(minutes):
     hours = minutes // 60
     min = minutes % 60
     return f"{hours}ч {min}м"
 
-#print(duration_in_hours(567))
+
+# print(duration_in_hours(567))
 
 # Этап 2. Условия и match
+
 
 def rating_tier(rating):
     if rating >= 7:
@@ -74,7 +142,9 @@ def decade_label(year):
         case _:
             return "старые"
 
-#Этап 3. Циклы
+
+# Этап 3. Циклы
+
 
 def print_non_comedy(movies):
     for movie in movies:
@@ -107,7 +177,8 @@ def count_long_movies(movies, threshold=120):
 # find_first_masterpiece(movies[:7])
 # print(count_long_movies(movies))
 
-#Этап 4. Строки
+# Этап 4. Строки
+
 
 def normalize_title(title):
     words = title.split()
@@ -125,9 +196,13 @@ def format_report_line(movie):
     title = normalize_title(movie["title"])
     genres = ", ".join(sorted(movie["genres"]))
     duration = duration_in_hours(movie["duration_min"])
-    return f'"{title}" ({movie["year"]}) — {movie["rating"]}/10, {duration}, жанры: {genres}'
+    return (
+        f'"{title}" ({movie["year"]}) — {movie["rating"]}/10, '
+        f"{duration}, жанры: {genres}"
+    )
 
-#Этап 5. Списки
+# Этап 5. Списки
+
 
 def titles_sorted_by_rating(movies):
     ordered = sorted(movies, key=lambda m: m["rating"], reverse=True)
@@ -138,7 +213,9 @@ def top_n_by_rating(movies, n=3):
     ordered = sorted(movies, key=lambda m: m["rating"], reverse=True)
     return [(m["title"], m["rating"]) for m in ordered[:n]]
 
-#Этап 6. Словари
+
+# Этап 6. Словари
+
 
 def count_by_genre(movies):
     counts = {}
@@ -159,7 +236,8 @@ def actor_filmography(movies):
 # avg = average_rating(movies)
 # above_average = {m["title"]: m["rating"] for m in movies if m["rating"] > avg}
 
-#Этап 7. Множества
+# Этап 7. Множества
+
 
 def all_genres(movies):
     genres = set()
@@ -175,7 +253,9 @@ def common_actors(movie1, movie2):
 def genres_only_in_one(movies_a, movies_b):
     return all_genres(movies_a) - all_genres(movies_b)
 
-#Этап 8. Итераторы и генераторы
+
+# Этап 8. Итераторы и генераторы
+
 
 def iter_high_rated(movies, min_rating=8.0):
     for movie in movies:
@@ -189,7 +269,8 @@ def iter_high_rated(movies, min_rating=8.0):
 total_minutes = sum(m["duration_min"] for m in movies if m["rating"] > 7)
 # print(total_minutes)
 
-#Этап 9. Итоговый отчёт
+# Этап 9. Итоговый отчёт
+
 
 def build_report(movies):
     _, _, avg_age = catalog_age_stats(movies)
