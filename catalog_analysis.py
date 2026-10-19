@@ -34,7 +34,7 @@ def average_rating(list):
 
 #print(average_rating(movies))
 
-def catalog_age_stats(list, current_year):
+def catalog_age_stats(list, current_year = 2026):
     ages = []
     for m in list:
         ages.append(current_year - m["year"])
@@ -156,8 +156,8 @@ def actor_filmography(movies):
     return result
 
 
-avg = average_rating(movies)
-above_average = {m["title"]: m["rating"] for m in movies if m["rating"] > avg}
+# avg = average_rating(movies)
+# above_average = {m["title"]: m["rating"] for m in movies if m["rating"] > avg}
 
 #Этап 7. Множества
 
@@ -183,8 +183,8 @@ def iter_high_rated(movies, min_rating=8.0):
             yield movie
 
 
-for movie in iter_high_rated(movies):
-    print(format_report_line(movie))
+# for movie in iter_high_rated(movies):
+#     print(format_report_line(movie))
 
 total_minutes = sum(m["duration_min"] for m in movies if m["rating"] > 7)
 # print(total_minutes)
