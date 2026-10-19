@@ -22,7 +22,7 @@ movies = [
      "rating": 7.3, "duration_min": 129, "actors": ["P. Diaz", "T. Chalamet"]},
 ]
 
-#Задача 1: Напишите три функции для базовой статистики каталога.
+#Этап 1: Напишите три функции для базовой статистики каталога.
 
 def average_rating(list):
     if not list:
@@ -54,9 +54,22 @@ def duration_in_hours(minutes):
 
 #print(duration_in_hours(567))
 
-# def main():
-#     print("Hello from dz-catalog-analysis-vishniakov-m26-555!")
+# Этап 2
+
+def rating_tier(rating):
+    if rating >= 7:
+        return "шедевр" if rating >= 9 else "хорошо"
+    elif rating >= 5:
+        return "средне"
+    else:
+        return "слабо"
 
 
-# if __name__ == "__main__":
-#     main()
+def decade_label(year):
+    match year:
+        case _ if year > 2020:
+            return "новые"
+        case _ if year >= 2015:
+            return "недавние"
+        case _:
+            return "старые"
