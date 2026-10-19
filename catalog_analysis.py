@@ -127,4 +127,15 @@ def format_report_line(movie):
     duration = duration_in_hours(movie["duration_min"])
     return f'"{title}" ({movie["year"]}) — {movie["rating"]}/10, {duration}, жанры: {genres}'
 
+#Этап 5. Списки
+
+def titles_sorted_by_rating(movies):
+    ordered = sorted(movies, key=lambda m: m["rating"], reverse=True)
+    return [m["title"] for m in ordered]
+
+
+def top_n_by_rating(movies, n=3):
+    ordered = sorted(movies, key=lambda m: m["rating"], reverse=True)
+    return [(m["title"], m["rating"]) for m in ordered[:n]]
+
 
